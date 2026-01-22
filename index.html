@@ -462,12 +462,13 @@
                 console.error('Error fetching repositories:', error);
                 loadingEl.style.display = 'none';
                 
-                // Fallback to mock data on error
+                // Fallback to mock data on error (only if not already using mock data)
                 if (!USE_MOCK_DATA) {
                     console.log('Falling back to mock data');
                     allRepos = MOCK_REPOS;
                     displayRepositories(MOCK_REPOS);
                 } else {
+                    // This should not happen when using mock data
                     errorEl.style.display = 'block';
                     errorEl.textContent = `Error: ${error.message}. Please try again later.`;
                 }
